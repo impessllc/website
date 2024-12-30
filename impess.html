@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IMPESS LLC - Imperative Essentials</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>IMPESS</h1>
+                <p>Imperative Essentials</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Section with Background Animation -->
+    <section id="home" class="banner">
+        <div class="container">
+            <h1>Welcome to IMPESS LLC.</h1>
+            <p>Find the best products at amazing prices! At IMPESS, we offer the essentials you need for success.</p>
+        </div>
+    </section>
+
+    <!-- Search Bar Section -->
+    <section id="search" class="search-bar">
+        <div class="container">
+            <input type="text" id="search-input" placeholder="Search for products...">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+<section id="shop" class="shop">
+    <div class="container">
+        <h2>Featured Products</h2>
+        <div id="product-list" class="product-list">
+            <!-- Product items will be injected here dynamically -->
+        </div>
+    </div>
+</section>
+
+<!-- Scrolling Images Section -->
+<section id="scrolling-images" class="scrolling-images">
+    <div class="scrolling-container">
+        <!-- Add your selected images here -->
+        <img src="image1.jpg" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+        <img src="image3.jpg" alt="Image 3">
+        <img src="image4.jpg" alt="Image 4">
+        <img src="image5.jpg" alt="Image 5">
+    </div>
+</section>
+
+
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2>About IMPESS LLC</h2>
+        <p>IMPESS LLC, short for Imperative Essentials, is dedicated to providing high-quality products that are essential for your success. We focus on offering the best products at the most competitive prices.</p>
+		<!-- Add the image here -->
+        <img src="impess.webp" alt="IMPESS LLC" class="about-image">
+    </div>
+</section>
+
+<!-- Add Shipbox Image above Horizontal Line -->
+<img src="shipbox.jpg" alt="Shipbox" class="shipbox-image">
+
+
+	<!-- Horizontal Line before Contact Us Section -->
+	<hr class="divider">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form action="https://formspree.io/f/yourformid" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+	<!-- Footer Section -->
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 IMPESS LLC - Imperative Essentials. All Rights Reserved.</p>
+			<p>Need help? <a href="mailto:support@impessllc.com">Email Support</a> or contact us at <strong>support@impessllc.com</strong></p>
+		</div>
+	</footer>
+
+
+
+    <script>
+        // Fetch products from the backend API
+        fetch('http://127.0.0.1:5000/api/products')
+            .then(response => response.json())  // Parse the JSON response
+            .then(products => {
+                const productList = document.getElementById('product-list');
+                
+                // Clear the product list before adding new items
+                productList.innerHTML = '';
+                
+                // Loop through the products and display them
+                products.forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    
+                    // Create HTML content for each product
+                    productDiv.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>$${product.price}</p>
+                        <button>Add to Cart</button>
+                    `;
+                    
+                    // Append the product to the product list
+                    productList.appendChild(productDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));  // Handle errors
+
+        // Search functionality
+        function searchProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const productItems = document.querySelectorAll('.product');
+            
+            productItems.forEach(item => {
+                const productName = item.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

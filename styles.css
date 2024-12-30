@@ -1,0 +1,390 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+/* Header Section */
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    position: relative;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #007bff;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Banner Section with Background Animation */
+.banner {
+    background-color: #007bff;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    animation: backgroundChange 10s infinite alternate;
+}
+
+@keyframes backgroundChange {
+    0% {
+        background-color: #007bff;
+    }
+    50% {
+        background-color: #28a745;
+    }
+    100% {
+        background-color: #ffc107;
+    }
+}
+
+.banner h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.banner p {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Search Bar Section */
+.search-bar {
+    background-color: #343a40;
+    padding: 15px 0;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.search-bar .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar input {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    width: 300px;
+    margin-right: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Shop Section */
+.shop {
+    padding: 50px 0;
+    background-color: #f1f1f1;
+}
+
+.shop .container {
+    text-align: center;
+}
+
+.shop h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product h3 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.product p {
+    font-size: 1em;
+    color: #007bff;
+}
+
+.product button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #0056b3;
+}
+
+//
+
+/* Scrolling Images Section */
+.scrolling-images {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    white-space: nowrap; /* Prevent images from wrapping to the next line */
+    width: 100%; /* Ensure the section takes up the full width */
+    overflow: hidden; /* Hide the part of images that are outside the container */
+}
+
+.scrolling-container {
+    display: flex;
+    animation: scroll-right-left 12s linear infinite; /* Scroll from right to left */
+}
+
+.scrolling-container img {
+    height: auto;  /* Ensure images scale proportionally */
+    width: auto;   /* Let images scale based on their aspect ratio */
+    max-height: 200px; /* Limit the height of images, but let them scale in width */
+    margin-right: 20px; /* Space between images */
+}
+
+/* Animation to move images from right to left and reappear from the right */
+@keyframes scroll-right-left {
+    0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%); /* Move off-screen to the left */
+    }
+}
+
+/* Duplicate the images for continuous scrolling */
+.scrolling-container::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    visibility: hidden;
+}
+
+
+
+//
+
+/* Contact Us Section */
+.contact {
+    display: flex;
+    justify-content: center; /* Horizontally center the form */
+    align-items: center;     /* Vertically center the form */
+    min-height: 100vh;       /* Ensure the section takes up at least the full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Center the container inside the contact section */
+.contact .container {
+    width: 100%;
+    max-width: 600px;        /* Limit the form width */
+    padding: 20px;
+    background-color: #f9f9f9; /* Optional: Add background color for better visibility */
+    border-radius: 8px;      /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+    margin: 0 auto;          /* Center the container */
+    text-align: center;      /* Center the content inside the container */
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;               /* Add space between form elements */
+}
+
+.contact label {
+    font-weight: bold;
+}
+
+.contact input,
+.contact textarea,
+.contact button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact button {
+    background-color: #4CAF50; /* Green background for the button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* Style for the horizontal line */
+.divider {
+    width: 100%;           /* Set the width of the line */
+    margin: 30px auto;     /* Center the line and add space above and below */
+    border: none;          /* Remove the default border */
+    border-top: 2px solid #007bff;  /* Set the color and thickness of the line */
+}
+
+/* Style for Shipbox Image */
+.shipbox-image {
+    display: block;               /* Ensures the image behaves like a block element */
+    margin: 0 auto 20px;          /* Centers the image horizontally and adds space below */
+    max-width: 4%;              /* Ensures the image is responsive */
+    height: auto;                 /* Maintains aspect ratio */
+    animation: move-left-right 4s linear infinite; /* Apply the animation */
+}
+
+/* Animation to move the image from left to right and back */
+@keyframes move-left-right {
+    0% {
+        transform: translateX(-100%); /* Start off-screen to the left */
+    }
+    50% {
+        transform: translateX(100%);  /* Move off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%); /* Move back to the left */
+    }
+}
+
+
+
+//
+
+/* About Section */
+.about {
+    display: flex; /* Enable Flexbox */
+	flex-direction: column;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+	text-align: center;
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    height: 100vh; /* Ensure the section takes up the full viewport height */
+	margin-bottom: 500px;
+}
+
+.about .container {
+    text-align: center; /* Center the text inside the container */
+    max-width: 800px;
+    margin: 0 auto; /* Centers the container itself */
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2em;
+    color: #333;
+	line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Ensure the image is responsive */
+.about-image {
+    display: block;        /* Ensures the image behaves like a block element */
+    margin: 20px auto;     /* Adds margin above and below the image, centers it horizontally */
+    max-width: 100%;       /* Ensures the image is responsive */
+    height: auto;          /* Keeps the aspect ratio intact */
+	margin-bottom: 300px;
+}
+
+
+
+/* footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+	margin-top: 50px;
+}
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+footer p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
